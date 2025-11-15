@@ -48,6 +48,44 @@ export default function PreviewPage() {
         scale: 2, // Higher quality
         logging: false,
         useCORS: true,
+        ignoreElements: (element) => {
+          // Ignore elements that might cause parsing issues
+          return false;
+        },
+        onclone: (clonedDoc) => {
+          // Convert any oklch/lab colors to rgb in the cloned document
+          const allElements = clonedDoc.querySelectorAll('*');
+          const clonedWindow = clonedDoc.defaultView || (clonedDoc as any).parentWindow;
+          
+          if (clonedWindow) {
+            allElements.forEach((el) => {
+              try {
+                const computedStyle = clonedWindow.getComputedStyle(el as Element);
+                const style = (el as HTMLElement).style;
+                
+                // Convert background-color
+                const bgColor = computedStyle.backgroundColor;
+                if (bgColor && (bgColor.includes('oklch') || bgColor.includes('lab'))) {
+                  style.backgroundColor = '#ffffff';
+                }
+                
+                // Convert color
+                const textColor = computedStyle.color;
+                if (textColor && (textColor.includes('oklch') || textColor.includes('lab'))) {
+                  style.color = '#000000';
+                }
+                
+                // Convert border-color
+                const borderColor = computedStyle.borderColor;
+                if (borderColor && (borderColor.includes('oklch') || borderColor.includes('lab'))) {
+                  style.borderColor = '#e5e5e5';
+                }
+              } catch (e) {
+                // Ignore errors for elements that can't be styled
+              }
+            });
+          }
+        },
       });
       
       // Convert canvas to blob
@@ -89,23 +127,23 @@ export default function PreviewPage() {
   return (
     <main className="min-h-screen bg-black">
       <div className="mx-auto max-w-4xl px-4 py-12">
-        <div className="mb-8 flex items-center gap-4 opacity-0 animate-in fade-in duration-500">
+        <div className="mb-8 flex items-center gap-4">
           <Link href="/create-id-card/select-student">
             <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-gray-800 transition-all">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
           <div>
-            <h1 className="mb-2 text-4xl font-bold text-white opacity-0 animate-in slide-in-from-left fade-in duration-700">
+            <h1 className="mb-2 text-4xl font-bold text-white">
               Step 3: Preview & Save
             </h1>
-            <p className="text-lg text-gray-400 opacity-0 animate-in slide-in-from-left fade-in duration-700 delay-100">
+            <p className="text-lg text-gray-400">
               Review the ID card and download when ready
             </p>
           </div>
         </div>
 
-        <div ref={cardRef} className="mb-8 opacity-0 animate-in zoom-in fade-in duration-700 delay-200">
+        <div ref={cardRef} className="mb-8">
           <Card className="overflow-hidden border-2 border-gray-800 bg-white shadow-2xl">
             <CardContent className="p-0">
               {/* Image Section */}
@@ -154,7 +192,7 @@ export default function PreviewPage() {
           </Card>
         </div>
 
-        <div className="flex gap-4 opacity-0 animate-in slide-in-from-bottom fade-in duration-700 delay-300">
+        <div className="flex gap-4">
           <Button
             onClick={handleDownload}
             disabled={isDownloading || downloadComplete}

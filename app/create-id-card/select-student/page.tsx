@@ -53,23 +53,23 @@ export default function SelectStudentPage() {
   return (
     <main className="min-h-screen bg-black">
       <div className="mx-auto max-w-4xl px-4 py-12">
-        <div className="mb-8 flex items-center gap-4 opacity-0 animate-in fade-in duration-500">
+        <div className="mb-8 flex items-center gap-4">
           <Link href="/create-id-card">
             <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-gray-800 transition-all">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
           <div>
-            <h1 className="mb-2 text-4xl font-bold text-white opacity-0 animate-in slide-in-from-left fade-in duration-700">
+            <h1 className="mb-2 text-4xl font-bold text-white">
               Step 2: Select Student
             </h1>
-            <p className="text-lg text-gray-400 opacity-0 animate-in slide-in-from-left fade-in duration-700 delay-100">
+            <p className="text-lg text-gray-400">
               Search and select the student for this ID card
             </p>
           </div>
         </div>
 
-        <Card className="mb-8 border-gray-800 bg-gray-900 opacity-0 animate-in zoom-in fade-in duration-500 delay-200">
+        <Card className="mb-8 border-gray-800 bg-gray-900">
           <CardContent className="pt-6">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
@@ -102,12 +102,11 @@ export default function SelectStudentPage() {
               <Card
                 key={student.id}
                 onClick={() => handleStudentSelect(student)}
-                className={`cursor-pointer border-2 transition-all duration-300 hover:border-gray-600 hover:scale-[1.02] hover:shadow-xl opacity-0 animate-in slide-in-from-bottom fade-in ${
+                className={`cursor-pointer border-2 transition-all duration-300 hover:border-gray-600 hover:scale-[1.02] hover:shadow-xl ${
                   selectedStudent?.id === student.id
                     ? "border-red-500 bg-gray-900 shadow-xl shadow-red-500/30 scale-[1.02]"
                     : "border-gray-800 bg-gray-900"
                 }`}
-                style={{ animationDelay: `${300 + index * 50}ms` }}
               >
                 <CardHeader>
                   <CardTitle className="text-xl text-white">{student.Name}</CardTitle>
