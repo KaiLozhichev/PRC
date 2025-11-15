@@ -37,7 +37,7 @@ export default function RootLayout({
             <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 p-4">
               <div className="flex items-center gap-3">
                 <a href="/">
-                  <Image src="/logo.svg" alt="Logo" width={48} height={48} />
+                  <Image src="/logo.png" alt="Logo" width={48} height={48} />
                 </a>
                 <span className="text-white font-semibold">Student Directory</span>
               </div>
