@@ -23,14 +23,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # Remove cache temporarily until lockfile exists
-          # cache: 'pnpm'
+          cache: 'pnpm'
       
       - name: Install dependencies
-        run: pnpm install  # Remove --frozen-lockfile flag
+        run: pnpm install --frozen-lockfile
       
       - name: Build Next.js
         run: pnpm build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
       
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
