@@ -53,37 +53,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-function LanguageSwitcher() {
-  // small client wrapper inside layout; locale-provider is a client component
-  // we import a hook dynamically to avoid server/client mismatch
-  // but since LocaleProvider is client we can render a small script
-  // We'll render a simple button group using client-side only
-  return (
-    <div className="flex items-center gap-2">
-      <LanguageButton lang="en" label="EN" />
-      <LanguageButton lang="th" label="TH" />
-    </div>
-  );
-}
-
-function LanguageButton({ lang, label }: { lang: string; label: string }) {
-  // client-only behavior
-  return (
-    // @ts-expect-error React will treat this as client interactive element
-    <button
-      onClick={() => {
-        try {
-          localStorage.setItem('locale', lang);
-          // force reload to pick up translations quickly
-          window.location.reload();
-        } catch (e) {
-          console.error(e);
-        }
-      }}
-      className="rounded-sm bg-gray-800 px-3 py-1 text-sm text-white hover:bg-gray-700"
-    >
-      {label}
-    </button>
-  );
-}
