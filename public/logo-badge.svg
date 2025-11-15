@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Outer dark circle background -->
+  <circle cx="100" cy="100" r="95" fill="#2a2a2a" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Inner circle -->
+  <circle cx="100" cy="100" r="85" fill="#1a1a1a"/>
+  
+  <!-- Award ribbon left -->
+  <path d="M 70 120 L 60 160 L 75 140 Z" fill="#0b66ff"/>
+  
+  <!-- Award ribbon right -->
+  <path d="M 130 120 L 140 160 L 125 140 Z" fill="#0b66ff"/>
+  
+  <!-- Medal circle -->
+  <circle cx="100" cy="85" r="35" fill="#0b66ff" stroke="#0b55dd" stroke-width="2"/>
+  
+  <!-- Inner medal ring -->
+  <circle cx="100" cy="85" r="28" fill="none" stroke="#0b88ff" stroke-width="1.5"/>
+  
+  <!-- Award star/badge shape -->
+  <path d="M 100 55 L 107 73 L 127 73 L 112 84 L 119 102 L 100 91 L 81 102 L 88 84 L 73 73 L 93 73 Z" fill="#fff" opacity="0.9"/>
+</svg>
