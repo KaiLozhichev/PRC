@@ -10,4 +10,4 @@ const nextConfig = {
   basePath: process.env.NODE_ENV === 'production' ? '/PRC' : '',
 }
 
-module.exports = nextConfig
+export default nextConfig
