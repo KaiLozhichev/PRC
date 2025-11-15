@@ -23,10 +23,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
+          # Remove cache temporarily until lockfile exists
+          # cache: 'pnpm'
       
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install  # Remove --frozen-lockfile flag
       
       - name: Build Next.js
         run: pnpm build
@@ -34,7 +35,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out  # Use 'out' for static export, not '.next'
+          path: ./out
   
   deploy:
     needs: build
