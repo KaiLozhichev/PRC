@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Search, ArrowLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { getAllStudents, type Student } from "@/app/actions";
+import { useTranslation } from '@/components/locale-provider';
 import Link from "next/link";
 
 export default function SelectStudentPage() {
@@ -15,6 +16,7 @@ export default function SelectStudentPage() {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const loadStudents = async () => {
@@ -61,10 +63,10 @@ export default function SelectStudentPage() {
           </Link>
           <div>
             <h1 className="mb-2 text-4xl font-bold text-white">
-              Step 2: Select Student
+              {t('selectStudent.title')}
             </h1>
             <p className="text-lg text-gray-400">
-              Search and select the student for this ID card
+              {t('selectStudent.subtitle')}
             </p>
           </div>
         </div>
@@ -75,7 +77,7 @@ export default function SelectStudentPage() {
               <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
               <Input
                 type="text"
-                placeholder="Search by name, class, student number..."
+                placeholder={t('selectStudent.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="h-12 border-gray-700 bg-black pl-10 text-base text-white placeholder:text-gray-500 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition-all"
@@ -88,12 +90,12 @@ export default function SelectStudentPage() {
         {isLoading ? (
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-gray-700 border-t-blue-600" />
-            <p className="mt-4 text-gray-400">Loading students...</p>
+            <p className="mt-4 text-gray-400">{t('selectStudent.loading') || 'Loading students...'}</p>
           </div>
         ) : filteredStudents.length === 0 ? (
           <Card className="border-gray-800 bg-gray-900">
             <CardContent className="py-12 text-center">
-              <p className="text-gray-400">No students found matching your search</p>
+              <p className="text-gray-400">{t('selectStudent.noResults')}</p>
             </CardContent>
           </Card>
         ) : (
@@ -149,7 +151,7 @@ export default function SelectStudentPage() {
             size="lg"
             className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/50 disabled:hover:scale-100"
           >
-            Next Step
+            {t('selectStudent.nextStep')}
           </Button>
         </div>
       </div>
