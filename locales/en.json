@@ -1,0 +1,10 @@
+{
+  "selectStudent": {
+    "title": "Step 2: Select Student",
+    "subtitle": "Search and select the student for this ID card",
+    "searchPlaceholder": "Search by name, class, student number...",
+    "loading": "Loading students...",
+    "noResults": "No students found matching your search",
+    "nextStep": "Next Step"
+  }
+}
