@@ -3,15 +3,23 @@
 import { Award as IdCard } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="mx-auto max-w-4xl px-4 py-24">
-        <div className="text-center">
-          <div className="mb-8 inline-flex items-center justify-center rounded-full bg-zinc-900 p-6 ring-2 ring-zinc-800">
-            <IdCard className="h-16 w-16 text-blue-500" />
-          </div>
+   <main className="min-h-screen bg-black text-white">
+  <div className="mx-auto max-w-4xl px-4 py-24">
+    <div className="text-center">
+      <div className="mb-8 inline-flex items-center justify-center rounded-full bg-zinc-900 p-6 ring-2 ring-zinc-800">
+        <a href="/" className="rounded-full overflow-hidden">
+          <Image 
+            src="/KDP.png" 
+            alt="KDP" 
+            width={96} 
+            height={96}
+            className="rounded-full"
+          />
+        </a>
+      </div>
           
           <h1 className="mb-4 text-5xl font-bold tracking-tight text-white">
             Student ID Card Creator
@@ -50,7 +58,7 @@ export default function Home() {
                 3
               </div>
               <h3 className="mb-2 font-semibold text-white">Preview & Save</h3>
-              <p className="text-sm text-zinc-400">Review and download the ID card</p>
+              <p className="text-sm text-zinc-400">Review and download</p>
             </div>
           </div>
         </div>
