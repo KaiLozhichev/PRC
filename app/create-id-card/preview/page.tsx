@@ -187,6 +187,10 @@ export default function PreviewPage() {
                     </div>
                   )}
                 </dl>
+                <div className="flex gap-2">
+                      <dt className="font-medium text-gray-600">Time:</dt>
+                      <dd className="text-gray-900">{new Date().toLocaleString()}</dd>
+                    </div>
               </div>
             </CardContent>
           </Card>
