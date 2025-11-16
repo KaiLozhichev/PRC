@@ -22,11 +22,11 @@ export default function Home() {
       </div>
           
           <h1 className="mb-4 text-5xl font-bold tracking-tight text-white">
-            Student ID Card Creator
+            KDP - Department of Programming
           </h1>
           
           <p className="mb-8 text-balance text-lg text-zinc-400">
-            Create professional student ID cards in three simple steps
+            2025 copyrights Made with Love by KDP
           </p>
           
           <Link href="/create-id-card">
