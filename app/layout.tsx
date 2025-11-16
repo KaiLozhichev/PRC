@@ -17,9 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Student Directory - Search Students",
-  description: "Search and find student information by name, surname, student ID, or nickname",
-    generator: 'v0.app'
+  title: "Student Directory",
+  description: "Search and find student information",
 };
 
 export default function RootLayout({
@@ -37,9 +36,9 @@ export default function RootLayout({
             <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 p-4">
               <div className="flex items-center gap-3">
                 <a href="/">
-                  <Image src="/logo-badge.svg" alt="Logo" width={48} height={48} />
+                  <Image src="/KDP.png" alt="Logo" width={48} height={48} />
                 </a>
-                <span className="text-white font-semibold">Student Directory</span>
+                <span className="text-white font-semibold">Prince Royal's College</span>
               </div>
               <div>
                 <LanguageSwitcher />
